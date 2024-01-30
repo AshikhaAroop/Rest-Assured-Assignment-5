@@ -32,7 +32,7 @@ public class GetUsers extends Utility {
         List<String> email = jsonPath.getList("data.email");
         int count=0;
         for (String s : email) {
-            if(s.contains(".co") && count<3){
+            if(s.endsWith(".co") && count<3){
                 count=count+1;
                 if(count==3)
                     break;

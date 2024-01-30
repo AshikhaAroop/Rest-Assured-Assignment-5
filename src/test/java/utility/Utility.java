@@ -9,6 +9,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import reporting.ExtentReportManager;
+import static org.hamcrest.Matchers.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -31,6 +32,7 @@ public class Utility extends Constants {
 //                log().all().
                 statusCode(statusCode).
                 header("Content-Type", "application/json; charset=utf-8").
+                time(lessThan(5000L)).
                 extract().response();
 
         reportDisplay(response);
@@ -137,4 +139,5 @@ public class Utility extends Constants {
         ExtentReportManager.logInfoDetails("Response body is: ");
         ExtentReportManager.logJson(response.getBody().prettyPrint());
     }
+
 }

@@ -28,9 +28,7 @@ public class CreateUsers extends Utility {
         String jsonObject = null;
         List<String>list1 = null;
         int rownum = getRowCount(excelPath, "Sheet1");
-        System.out.println(rownum);
         int colnum = getCellCount(excelPath, "Sheet1", 1);
-        System.out.println(colnum);
 
         for (int i = 1; i <= rownum; i++) {
             list1=new ArrayList<>();
@@ -41,11 +39,8 @@ public class CreateUsers extends Utility {
 
             assert list1 != null;
             String randomstr= randomStringGenerator();
-            System.out.println(randomstr);
-            System.out.println(list1.get(2)+randomstr);
             list1.set(2, list1.get(2)+randomstr);
             jsonObject= customBodyRequestPostUser(list1.get(0), list1.get(1), list1.get(2), list1.get(3));
-            System.out.println(jsonObject);
             response=validatePostCall(bearerToken,jsonObject,201);
         }
         validatePostWithExistingRecord(jsonObject);
